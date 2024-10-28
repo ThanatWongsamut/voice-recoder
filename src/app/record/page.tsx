@@ -24,12 +24,13 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Language, useTranslation } from '@/translation';
+import { usePassages } from '@/hooks/usePassages';
 
-interface Passage {
-  id: number;
-  en: string;
-  th: string;
-}
+// interface Passage {
+//   id: number;
+//   en: string;
+//   th: string;
+// }
 
 interface AudioBlob {
   en: Blob | null;
@@ -48,83 +49,83 @@ interface RecordingStatus {
   error: string;
 }
 
-const samplePassages: Passage[] = [
-  {
-    id: 1,
-    en: 'The quick brown fox jumps over the lazy dog.',
-    th: 'เจ้าสุนัขจิ้งจอกสีน้ำตาลกระโดดข้ามสุนัขขี้เกียจ',
-  },
-  {
-    id: 2,
-    en: 'Success is not final, failure is not fatal: it is the courage to continue that counts.',
-    th: 'ความสำเร็จไม่ใช่จุดจบ ความล้มเหลวไม่ใช่เรื่องถึงตาย: สิ่งสำคัญคือความกล้าที่จะทำต่อไป',
-  },
-  {
-    id: 3,
-    en: `Life is like a box of chocolates. You never know what you're going to get.`,
-    th: 'ชีวิตเหมือนกล่องช็อคโกแลต คุณไม่มีทางรู้ว่าจะได้อะไร',
-  },
-  {
-    id: 4,
-    en: `In three words I can sum up everything I've learned about life: it goes on.`,
-    th: 'ฉันสามารถสรุปทุกสิ่งที่ได้เรียนรู้เกี่ยวกับชีวิตในสามคำ: มันดำเนินต่อไป',
-  },
-  {
-    id: 5,
-    en: 'The only way to do great work is to love what you do.',
-    th: 'หนทางเดียวที่จะทำงานที่ยอดเยี่ยมคือการรักในสิ่งที่คุณทำ',
-  },
-  {
-    id: 6,
-    en: 'Every moment is a fresh beginning.',
-    th: 'ทุกขณะคือการเริ่มต้นใหม่',
-  },
-  {
-    id: 7,
-    en: 'The best way to predict the future is to create it.',
-    th: 'วิธีที่ดีที่สุดในการทำนายอนาคตคือการสร้างมันขึ้นมา',
-  },
-  {
-    id: 8,
-    en: 'Happiness is not something ready made. It comes from your own actions.',
-    th: 'ความสุขไม่ใช่สิ่งที่ถูกสร้างขึ้นมาพร้อมใช้ มันเกิดจากการกระทำของคุณเอง',
-  },
-  {
-    id: 9,
-    en: 'The journey of a thousand miles begins with one step.',
-    th: 'การเดินทางพันไมล์เริ่มต้นด้วยก้าวแรก',
-  },
-  {
-    id: 10,
-    en: 'Change your thoughts and you change your world.',
-    th: 'เปลี่ยนความคิดของคุณ และคุณจะเปลี่ยนโลกของคุณ',
-  },
-  {
-    id: 11,
-    en: 'Education is the most powerful weapon which you can use to change the world.',
-    th: 'การศึกษาคืออาวุธที่ทรงพลังที่สุดที่คุณสามารถใช้เปลี่ยนแปลงโลก',
-  },
-  {
-    id: 12,
-    en: 'The future belongs to those who believe in the beauty of their dreams.',
-    th: 'อนาคตเป็นของคนที่เชื่อในความงดงามของความฝัน',
-  },
-  {
-    id: 13,
-    en: `Believe you can and you're halfway there.`,
-    th: 'เชื่อว่าคุณทำได้ และคุณก็มาถึงครึ่งทางแล้ว',
-  },
-  {
-    id: 14,
-    en: 'The only limit to our realization of tomorrow will be our doubts of today.',
-    th: 'ขีดจำกัดเดียวของการบรรลุเป้าหมายในวันพรุ่งนี้คือความสงสัยของเราในวันนี้',
-  },
-  {
-    id: 15,
-    en: 'Do what you can, with what you have, where you are.',
-    th: 'จงทำสิ่งที่คุณทำได้ ด้วยสิ่งที่คุณมี ณ ที่ที่คุณอยู่',
-  },
-];
+// const samplePassages: Passage[] = [
+//   {
+//     id: 1,
+//     en: 'The quick brown fox jumps over the lazy dog.',
+//     th: 'เจ้าสุนัขจิ้งจอกสีน้ำตาลกระโดดข้ามสุนัขขี้เกียจ',
+//   },
+//   {
+//     id: 2,
+//     en: 'Success is not final, failure is not fatal: it is the courage to continue that counts.',
+//     th: 'ความสำเร็จไม่ใช่จุดจบ ความล้มเหลวไม่ใช่เรื่องถึงตาย: สิ่งสำคัญคือความกล้าที่จะทำต่อไป',
+//   },
+//   {
+//     id: 3,
+//     en: `Life is like a box of chocolates. You never know what you're going to get.`,
+//     th: 'ชีวิตเหมือนกล่องช็อคโกแลต คุณไม่มีทางรู้ว่าจะได้อะไร',
+//   },
+//   {
+//     id: 4,
+//     en: `In three words I can sum up everything I've learned about life: it goes on.`,
+//     th: 'ฉันสามารถสรุปทุกสิ่งที่ได้เรียนรู้เกี่ยวกับชีวิตในสามคำ: มันดำเนินต่อไป',
+//   },
+//   {
+//     id: 5,
+//     en: 'The only way to do great work is to love what you do.',
+//     th: 'หนทางเดียวที่จะทำงานที่ยอดเยี่ยมคือการรักในสิ่งที่คุณทำ',
+//   },
+//   {
+//     id: 6,
+//     en: 'Every moment is a fresh beginning.',
+//     th: 'ทุกขณะคือการเริ่มต้นใหม่',
+//   },
+//   {
+//     id: 7,
+//     en: 'The best way to predict the future is to create it.',
+//     th: 'วิธีที่ดีที่สุดในการทำนายอนาคตคือการสร้างมันขึ้นมา',
+//   },
+//   {
+//     id: 8,
+//     en: 'Happiness is not something ready made. It comes from your own actions.',
+//     th: 'ความสุขไม่ใช่สิ่งที่ถูกสร้างขึ้นมาพร้อมใช้ มันเกิดจากการกระทำของคุณเอง',
+//   },
+//   {
+//     id: 9,
+//     en: 'The journey of a thousand miles begins with one step.',
+//     th: 'การเดินทางพันไมล์เริ่มต้นด้วยก้าวแรก',
+//   },
+//   {
+//     id: 10,
+//     en: 'Change your thoughts and you change your world.',
+//     th: 'เปลี่ยนความคิดของคุณ และคุณจะเปลี่ยนโลกของคุณ',
+//   },
+//   {
+//     id: 11,
+//     en: 'Education is the most powerful weapon which you can use to change the world.',
+//     th: 'การศึกษาคืออาวุธที่ทรงพลังที่สุดที่คุณสามารถใช้เปลี่ยนแปลงโลก',
+//   },
+//   {
+//     id: 12,
+//     en: 'The future belongs to those who believe in the beauty of their dreams.',
+//     th: 'อนาคตเป็นของคนที่เชื่อในความงดงามของความฝัน',
+//   },
+//   {
+//     id: 13,
+//     en: `Believe you can and you're halfway there.`,
+//     th: 'เชื่อว่าคุณทำได้ และคุณก็มาถึงครึ่งทางแล้ว',
+//   },
+//   {
+//     id: 14,
+//     en: 'The only limit to our realization of tomorrow will be our doubts of today.',
+//     th: 'ขีดจำกัดเดียวของการบรรลุเป้าหมายในวันพรุ่งนี้คือความสงสัยของเราในวันนี้',
+//   },
+//   {
+//     id: 15,
+//     en: 'Do what you can, with what you have, where you are.',
+//     th: 'จงทำสิ่งที่คุณทำได้ ด้วยสิ่งที่คุณมี ณ ที่ที่คุณอยู่',
+//   },
+// ];
 
 class AudioRecorder {
   private mediaRecorder: MediaRecorder | null;
@@ -188,6 +189,8 @@ const RecordingPage = () => {
   // const t = translations[language];
 
   const { t, setLanguage } = useTranslation('recording');
+
+  const passages = usePassages();
 
   useEffect(() => {
     checkMicrophonePermission();
@@ -345,8 +348,8 @@ const RecordingPage = () => {
           {isCompleted && <CheckCircle className="h-4 w-4 text-green-600" />}
         </h3>
 
-        <div className="bg-gray-50 p-6 rounded-lg text-lg border">
-          {samplePassages[currentPassageIndex][lang]}
+        <div className="bg-gray-50 p-6 rounded-lg text-lg border" suppressHydrationWarning>
+          {passages[currentPassageIndex][lang]}
         </div>
 
         <div className="flex gap-4 flex-wrap">
