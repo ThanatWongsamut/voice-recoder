@@ -6,38 +6,157 @@ export interface Passage {
   th: string;
 }
 
-// About 1-minute reading passages (approximately 130-150 words each)
+// About 30-second reading passages (approximately 65-75 words each)
 const allPassages: Passage[] = [
   {
     id: 1,
-    en: `In today's rapidly evolving digital landscape, artificial intelligence has become an integral part of our daily lives. From virtual assistants that help us schedule appointments to smart home devices that automate our routines, AI technology continues to reshape how we interact with the world around us. Despite its widespread adoption, many people still have concerns about privacy and ethical implications. It's crucial to strike a balance between technological advancement and maintaining human values, ensuring that AI serves as a tool for enhancement rather than replacement. As we move forward, the focus should be on developing AI systems that are transparent, accountable, and designed with human well-being in mind.`,
-    th: `ในภูมิทัศน์ดิจิทัลที่เปลี่ยนแปลงอย่างรวดเร็วในปัจจุบัน ปัญญาประดิษฐ์ได้กลายเป็นส่วนสำคัญของชีวิตประจำวันของเรา ตั้งแต่ผู้ช่วยเสมือนที่ช่วยจัดตารางนัดหมาย ไปจนถึงอุปกรณ์บ้านอัจฉริยะที่ทำให้กิจวัตรประจำวันของเราเป็นอัตโนมัติ เทคโนโลยี AI ยังคงปรับเปลี่ยนวิธีที่เราโต้ตอบกับโลกรอบตัว แม้จะมีการนำมาใช้อย่างแพร่หลาย แต่หลายคนยังกังวลเกี่ยวกับความเป็นส่วนตัวและผลกระทบทางจริยธรรม สิ่งสำคัญคือต้องสร้างสมดุลระหว่างความก้าวหน้าทางเทคโนโลยีและการรักษาคุณค่าความเป็นมนุษย์ เพื่อให้แน่ใจว่า AI เป็นเครื่องมือสำหรับการเพิ่มประสิทธิภาพมากกว่าการทดแทน`,
+    en: `Artificial intelligence is increasingly present in our daily routines. From voice assistants to recommendation algorithms, AI shapes how we interact with technology. While it offers convenience, concerns about privacy and ethical use remain important.`,
+    th: `ปัญญาประดิษฐ์มีบทบาทมากขึ้นในกิจวัตรประจำวันของเรา ตั้งแต่ผู้ช่วยเสียงไปจนถึงอัลกอริทึมการแนะนำ AI กำหนดวิธีที่เราโต้ตอบกับเทคโนโลยี แม้ว่ามันจะมอบความสะดวกสบาย แต่ความกังวลเกี่ยวกับความเป็นส่วนตัวและการใช้อย่างมีจริยธรรมยังคงมีความสำคัญ`,
   },
   {
     id: 2,
-    en: `Climate change remains one of the most pressing challenges facing our planet. Rising global temperatures have led to more frequent extreme weather events, from devastating hurricanes to prolonged droughts. The impact on ecosystems is profound, with many species facing extinction and entire habitats being destroyed. While individual actions like reducing carbon footprints matter, systemic change through policy reform and industrial transformation is crucial. Scientists emphasize that we have a narrow window of opportunity to prevent the worst effects of climate change. This requires international cooperation, innovative green technologies, and a fundamental shift in how we think about consumption and economic growth.`,
-    th: `การเปลี่ยนแปลงสภาพภูมิอากาศยังคงเป็นหนึ่งในความท้าทายที่สำคัญที่สุดที่โลกของเรากำลังเผชิญ อุณหภูมิโลกที่สูงขึ้นนำไปสู่สภาพอากาศรุนแรงที่เกิดขึ้นบ่อยครั้งขึ้น ตั้งแต่พายุเฮอริเคนที่สร้างความเสียหายไปจนถึงภัยแล้งที่ยาวนาน ผลกระทบต่อระบบนิเวศนั้นรุนแรง โดยสิ่งมีชีวิตหลายสายพันธุ์กำลังเผชิญกับการสูญพันธุ์และที่อยู่อาศัยทั้งหมดถูกทำลาย แม้ว่าการกระทำของแต่ละบุคคล เช่น การลดรอยเท้าคาร์บอนจะมีความสำคัญ แต่การเปลี่ยนแปลงระบบผ่านการปฏิรูปนโยบายและการเปลี่ยนแปลงอุตสาหกรรมเป็นสิ่งสำคัญ`,
+    en: `Climate change poses significant challenges worldwide. Rising temperatures lead to extreme weather events affecting ecosystems and human societies. Collective efforts are needed to mitigate these impacts and adapt to new environmental realities.`,
+    th: `การเปลี่ยนแปลงสภาพภูมิอากาศเป็นความท้าทายที่สำคัญทั่วโลก อุณหภูมิที่สูงขึ้นนำไปสู่เหตุการณ์สภาพอากาศสุดขั้วที่ส่งผลกระทบต่อระบบนิเวศและสังคมมนุษย์ จำเป็นต้องมีความพยายามร่วมกันเพื่อลดผลกระทบเหล่านี้และปรับตัวให้เข้ากับความเป็นจริงทางสิ่งแวดล้อมใหม่`,
   },
   {
     id: 3,
-    en: `The human brain is perhaps the most complex structure in the known universe. With approximately 86 billion neurons forming trillions of connections, it controls everything from basic bodily functions to complex emotional responses and abstract thinking. Recent advances in neuroscience have revealed fascinating insights into how memories are formed, decisions are made, and consciousness emerges. Understanding the brain's incredible plasticity – its ability to rewire and adapt – has revolutionary implications for education, mental health treatment, and cognitive enhancement. However, many mysteries remain unsolved, and researchers continue to discover new aspects of brain function that challenge our existing theories about human consciousness and cognition.`,
-    th: `สมองของมนุษย์อาจเป็นโครงสร้างที่ซับซ้อนที่สุดในจักรวาลที่เรารู้จัก ด้วยเซลล์ประสาทประมาณ 86 พันล้านเซลล์ที่สร้างการเชื่อมต่อนับล้านล้าน มันควบคุมทุกอย่างตั้งแต่การทำงานพื้นฐานของร่างกายไปจนถึงการตอบสนองทางอารมณ์ที่ซับซ้อนและความคิดเชิงนามธรรม ความก้าวหน้าล่าสุดในประสาทวิทยาได้เผยให้เห็นข้อมูลเชิงลึกที่น่าสนใจเกี่ยวกับวิธีการสร้างความทรงจำ การตัดสินใจ และการเกิดจิตสำนึก ความเข้าใจเกี่ยวกับความยืดหยุ่นที่น่าทึ่งของสมอง`,
+    en: `Regular exercise is essential for maintaining good health. Physical activity strengthens the heart, improves circulation, and reduces stress levels. Even moderate exercise like walking can have significant health benefits over time.`,
+    th: `การออกกำลังกายเป็นประจำเป็นสิ่งจำเป็นสำหรับการรักษาสุขภาพที่ดี กิจกรรมทางกายช่วยเสริมสร้างหัวใจ ปรับปรุงการไหลเวียน และลดระดับความเครียด แม้แต่การออกกำลังกายปานกลางอย่างการเดินก็มีประโยชน์ต่อสุขภาพอย่างมากเมื่อเวลาผ่านไป`,
   },
-  // Add more passages here...
+  {
+    id: 4,
+    en: `Eating a balanced diet is crucial for overall well-being. Incorporating a variety of fruits, vegetables, whole grains, and lean proteins can provide essential nutrients. Healthy eating habits contribute to better energy levels and disease prevention.`,
+    th: `การรับประทานอาหารที่สมดุลเป็นสิ่งสำคัญสำหรับความเป็นอยู่ที่ดีโดยรวม การรวมผลไม้ ผัก ธัญพืชเต็มเมล็ด และโปรตีนไร้ไขมันชนิดต่างๆ สามารถให้สารอาหารที่จำเป็น นิสัยการกินที่ดีต่อสุขภาพช่วยเพิ่มระดับพลังงานและป้องกันโรค`,
+  },
+  {
+    id: 5,
+    en: `Time management skills help improve productivity. Prioritizing tasks and setting realistic goals can reduce stress and enhance efficiency. Effective time management allows for a better work-life balance.`,
+    th: `ทักษะการจัดการเวลาช่วยปรับปรุงประสิทธิภาพ การจัดลำดับความสำคัญของงานและการตั้งเป้าหมายที่เป็นจริงสามารถลดความเครียดและเพิ่มประสิทธิภาพ การจัดการเวลาที่มีประสิทธิภาพช่วยให้เกิดสมดุลระหว่างชีวิตและการทำงานที่ดีขึ้น`,
+  },
+  {
+    id: 6,
+    en: `Technology continues to revolutionize education. Online learning platforms provide access to resources worldwide, enabling flexible and personalized education. This shift has expanded opportunities for lifelong learning.`,
+    th: `เทคโนโลยียังคงปฏิวัติการศึกษา แพลตฟอร์มการเรียนรู้ออนไลน์ให้การเข้าถึงแหล่งข้อมูลทั่วโลก ทำให้เกิดการศึกษาที่ยืดหยุ่นและปรับแต่งได้ การเปลี่ยนแปลงนี้ได้ขยายโอกาสสำหรับการเรียนรู้ตลอดชีวิต`,
+  },
+  {
+    id: 7,
+    en: `Cultural diversity enriches societies by introducing new perspectives and ideas. Embracing different cultures promotes understanding and cooperation among communities. Diversity fosters innovation and creativity.`,
+    th: `ความหลากหลายทางวัฒนธรรมเพิ่มพูนสังคมด้วยการแนะนำมุมมองและความคิดใหม่ๆ การยอมรับวัฒนธรรมที่แตกต่างส่งเสริมความเข้าใจและความร่วมมือระหว่างชุมชน ความหลากหลายส่งเสริมการสร้างสรรค์นวัตกรรมและความคิดสร้างสรรค์`,
+  },
+  {
+    id: 8,
+    en: `Sleep is vital for health and well-being. Adequate rest helps with memory consolidation and physical recovery. Poor sleep can lead to decreased cognitive function and increased risk of health issues.`,
+    th: `การนอนหลับมีความสำคัญต่อสุขภาพและความเป็นอยู่ที่ดี การพักผ่อนอย่างเพียงพอช่วยในการรวมความจำและการฟื้นตัวทางร่างกาย การนอนหลับที่ไม่ดีสามารถนำไปสู่การทำงานของการรับรู้ที่ลดลงและความเสี่ยงที่เพิ่มขึ้นของปัญหาสุขภาพ`,
+  },
+  {
+    id: 9,
+    en: `Art and music play significant roles in human expression. They offer ways to convey emotions and ideas beyond words. Engaging with the arts can enhance empathy and cultural awareness.`,
+    th: `ศิลปะและดนตรีมีบทบาทสำคัญในการแสดงออกของมนุษย์ พวกเขาเสนอวิธีการสื่อสารอารมณ์และความคิดที่เกินคำพูด การมีส่วนร่วมกับศิลปะสามารถเพิ่มความเห็นอกเห็นใจและความตระหนักทางวัฒนธรรม`,
+  },
+  {
+    id: 10,
+    en: `Financial literacy is essential in today's world. Understanding budgeting, saving, and investing helps individuals make informed decisions. Financial education contributes to personal stability and economic growth.`,
+    th: `ความรู้ทางการเงินเป็นสิ่งจำเป็นในโลกปัจจุบัน การเข้าใจการจัดทำงบประมาณ การออม และการลงทุนช่วยให้บุคคลตัดสินใจได้อย่างรอบรู้ การศึกษาทางการเงินช่วยให้เกิดความมั่นคงส่วนบุคคลและการเติบโตทางเศรษฐกิจ`,
+  },
+  {
+    id: 11,
+    en: `Communication skills are key to personal and professional success. Active listening and clear expression facilitate better relationships. Improving communication can lead to more effective teamwork and problem-solving.`,
+    th: `ทักษะการสื่อสารเป็นกุญแจสู่ความสำเร็จส่วนบุคคลและอาชีพ การฟังอย่างกระตือรือร้นและการแสดงออกที่ชัดเจนช่วยอำนวยความสะดวกในความสัมพันธ์ที่ดีขึ้น การปรับปรุงการสื่อสารสามารถนำไปสู่การทำงานเป็นทีมและการแก้ปัญหาที่มีประสิทธิภาพมากขึ้น`,
+  },
+  {
+    id: 12,
+    en: `Mindfulness practices can reduce stress and improve mental health. Techniques like meditation and deep breathing promote relaxation. Incorporating mindfulness into daily life enhances overall well-being.`,
+    th: `การฝึกสติสามารถลดความเครียดและปรับปรุงสุขภาพจิต เทคนิคเช่นการทำสมาธิและการหายใจลึกๆ ส่งเสริมการผ่อนคลาย การรวมสติเข้ากับชีวิตประจำวันช่วยเพิ่มความเป็นอยู่ที่ดีโดยรวม`,
+  },
+  {
+    id: 13,
+    en: `Renewable energy sources are vital for a sustainable future. Technologies like solar and wind power reduce dependence on fossil fuels. Transitioning to clean energy can mitigate environmental impacts.`,
+    th: `แหล่งพลังงานหมุนเวียนมีความสำคัญต่ออนาคตที่ยั่งยืน เทคโนโลยีเช่นพลังงานแสงอาทิตย์และพลังงานลมลดการพึ่งพาเชื้อเพลิงฟอสซิล การเปลี่ยนไปสู่พลังงานสะอาดสามารถบรรเทาผลกระทบต่อสิ่งแวดล้อม`,
+  },
+  {
+    id: 14,
+    en: `Volunteer work benefits both communities and individuals. Engaging in service fosters empathy and social responsibility. Volunteering provides opportunities to develop skills and make meaningful contributions.`,
+    th: `งานอาสาสมัครเป็นประโยชน์ต่อทั้งชุมชนและบุคคล การมีส่วนร่วมในการบริการส่งเสริมความเห็นอกเห็นใจและความรับผิดชอบต่อสังคม การเป็นอาสาสมัครให้โอกาสในการพัฒนาทักษะและมีส่วนร่วมที่มีความหมาย`,
+  },
+  {
+    id: 15,
+    en: `Digital security is increasingly important in the modern world. Protecting personal information online helps prevent identity theft and fraud. Using strong passwords and being cautious with data sharing are essential practices.`,
+    th: `ความปลอดภัยทางดิจิทัลมีความสำคัญมากขึ้นในโลกสมัยใหม่ การปกป้องข้อมูลส่วนบุคคลออนไลน์ช่วยป้องกันการขโมยข้อมูลประจำตัวและการฉ้อโกง การใช้รหัสผ่านที่แข็งแกร่งและระมัดระวังในการแบ่งปันข้อมูลเป็นการปฏิบัติที่จำเป็น`,
+  },
+  {
+    id: 16,
+    en: `Sustainable agriculture supports environmental health. Practices like crop rotation and organic farming reduce soil degradation. Sustainable methods contribute to long-term food security.`,
+    th: `การเกษตรที่ยั่งยืนสนับสนุนสุขภาพสิ่งแวดล้อม การปฏิบัติเช่นการหมุนเวียนพืชผลและการเกษตรอินทรีย์ลดการเสื่อมสภาพของดิน วิธีการที่ยั่งยืนช่วยให้มั่นคงด้านอาหารในระยะยาว`,
+  },
+  {
+    id: 17,
+    en: `Language learning opens doors to new cultures and opportunities. Bilingualism enhances cognitive abilities and communication skills. Learning a new language can be both challenging and rewarding.`,
+    th: `การเรียนรู้ภาษาช่วยเปิดประตูสู่วัฒนธรรมและโอกาสใหม่ๆ การพูดสองภาษาเพิ่มความสามารถในการรับรู้และทักษะการสื่อสาร การเรียนรู้ภาษาใหม่สามารถทั้งท้าทายและให้รางวัล`,
+  },
+  {
+    id: 18,
+    en: `Critical thinking skills enable better decision-making. Analyzing information objectively helps in evaluating arguments and evidence. Developing critical thinking promotes independence and problem-solving abilities.`,
+    th: `ทักษะการคิดเชิงวิพากษ์ช่วยให้ตัดสินใจได้ดีขึ้น การวิเคราะห์ข้อมูลอย่างเป็นกลางช่วยในการประเมินข้อโต้แย้งและหลักฐาน การพัฒนาการคิดเชิงวิพากษ์ส่งเสริมความเป็นอิสระและความสามารถในการแก้ปัญหา`,
+  },
+  {
+    id: 19,
+    en: `Globalization has interconnected economies and cultures. It offers opportunities for trade and cultural exchange but also poses challenges like economic disparities. Understanding globalization is key to navigating today's world.`,
+    th: `โลกาภิวัตน์ได้เชื่อมโยงเศรษฐกิจและวัฒนธรรมเข้าด้วยกัน มันมอบโอกาสสำหรับการค้าและการแลกเปลี่ยนวัฒนธรรม แต่ยังสร้างความท้าทายเช่นความเหลื่อมล้ำทางเศรษฐกิจ ความเข้าใจโลกาภิวัตน์เป็นกุญแจสำคัญในการนำทางโลกปัจจุบัน`,
+  },
+  {
+    id: 20,
+    en: `Healthy relationships are built on trust and communication. Respecting boundaries and actively listening contribute to strong connections. Investing time and effort strengthens bonds with others.`,
+    th: `ความสัมพันธ์ที่ดีต่อสุขภาพสร้างขึ้นบนความไว้วางใจและการสื่อสาร การเคารพขอบเขตและการฟังอย่างตั้งใจช่วยสร้างความสัมพันธ์ที่แข็งแกร่ง การลงทุนเวลาและความพยายามช่วยเสริมสร้างความสัมพันธ์กับผู้อื่น`,
+  },
+  {
+    id: 21,
+    en: `Technological advancements drive innovation across industries. Developments in artificial intelligence and biotechnology are transforming fields like medicine and manufacturing. Staying informed about technology trends is increasingly important.`,
+    th: `ความก้าวหน้าทางเทคโนโลยีขับเคลื่อนนวัตกรรมในอุตสาหกรรมต่างๆ การพัฒนาในปัญญาประดิษฐ์และเทคโนโลยีชีวภาพกำลังเปลี่ยนแปลงสาขาเช่นการแพทย์และการผลิต การติดตามข้อมูลเกี่ยวกับแนวโน้มเทคโนโลยีมีความสำคัญมากขึ้น`,
+  },
+  {
+    id: 22,
+    en: `Environmental conservation protects natural resources. Efforts like recycling and habitat preservation help sustain biodiversity. Conservation initiatives are crucial for the health of the planet.`,
+    th: `การอนุรักษ์สิ่งแวดล้อมปกป้องทรัพยากรธรรมชาติ ความพยายามเช่นการรีไซเคิลและการอนุรักษ์ถิ่นที่อยู่อาศัยช่วยรักษาความหลากหลายทางชีวภาพ โครงการอนุรักษ์มีความสำคัญต่อสุขภาพของโลก`,
+  },
+  {
+    id: 23,
+    en: `The importance of mental health awareness is growing. Recognizing and addressing mental health issues leads to better outcomes. Support systems and open conversations reduce stigma.`,
+    th: `ความสำคัญของการตระหนักรู้ด้านสุขภาพจิตกำลังเติบโต การรับรู้และจัดการกับปัญหาสุขภาพจิตนำไปสู่ผลลัพธ์ที่ดีขึ้น ระบบสนับสนุนและการสนทนาเปิดเผยช่วยลดการตีตรา`,
+  },
+  {
+    id: 24,
+    en: `Leadership skills can be developed through experience and education. Effective leaders inspire others and facilitate collaboration. Leadership involves responsibility, vision, and adaptability.`,
+    th: `ทักษะการเป็นผู้นำสามารถพัฒนาได้ผ่านประสบการณ์และการศึกษา ผู้นำที่มีประสิทธิภาพสร้างแรงบันดาลใจให้ผู้อื่นและอำนวยความสะดวกในการทำงานร่วมกัน ความเป็นผู้นำเกี่ยวข้องกับความรับผิดชอบ วิสัยทัศน์ และความสามารถในการปรับตัว`,
+  },
+  {
+    id: 25,
+    en: `Historical knowledge provides context for the present. Studying history helps us understand societal developments and avoid past mistakes. History education promotes informed citizenship.`,
+    th: `ความรู้ทางประวัติศาสตร์ให้บริบทสำหรับปัจจุบัน การศึกษาประวัติศาสตร์ช่วยให้เราเข้าใจพัฒนาการทางสังคมและหลีกเลี่ยงความผิดพลาดในอดีต การศึกษาประวัติศาสตร์ส่งเสริมความเป็นพลเมืองที่มีข้อมูล`,
+  },
+  {
+    id: 26,
+    en: `The internet has transformed how we access information. Online resources provide vast amounts of data but require critical evaluation. Information literacy is essential in navigating digital content.`,
+    th: `อินเทอร์เน็ตได้เปลี่ยนวิธีที่เราเข้าถึงข้อมูล ทรัพยากรออนไลน์ให้ข้อมูลจำนวนมากแต่ต้องการการประเมินอย่างวิพากษ์ ความรู้สารสนเทศเป็นสิ่งจำเป็นในการนำทางเนื้อหาดิจิทัล`,
+  },
+  {
+    id: 27,
+    en: `Teamwork is fundamental in many professional environments. Collaborative efforts leverage diverse skills and perspectives. Effective teamwork leads to better problem-solving and innovation.`,
+    th: `การทำงานเป็นทีมเป็นพื้นฐานในสภาพแวดล้อมการทำงานมืออาชีพหลายแห่ง ความพยายามร่วมกันใช้ประโยชน์จากทักษะและมุมมองที่หลากหลาย การทำงานเป็นทีมที่มีประสิทธิภาพนำไปสู่การแก้ปัญหาและนวัตกรรมที่ดีขึ้น`,
+  },
   {
     id: 28,
-    en: `The art of storytelling has been an essential part of human culture since the dawn of civilization. Through narratives, we share experiences, preserve history, and make sense of the world around us. In modern times, storytelling has evolved beyond traditional oral traditions to encompass various media formats, from books and films to virtual reality experiences. Despite these technological advances, the fundamental elements of a compelling story remain unchanged: strong characters, meaningful conflict, and emotional resonance. Understanding these principles helps us create more engaging content and connect with audiences on a deeper level.`,
-    th: `ศิลปะการเล่าเรื่องเป็นส่วนสำคัญของวัฒนธรรมมนุษย์มาตั้งแต่จุดเริ่มต้นของอารยธรรม ผ่านการเล่าเรื่อง เราแบ่งปันประสบการณ์ รักษาประวัติศาสตร์ และทำความเข้าใจโลกรอบตัวเรา ในยุคสมัยใหม่ การเล่าเรื่องได้พัฒนาไปไกลกว่าประเพณีการเล่าด้วยปากเปล่าแบบดั้งเดิม ครอบคลุมรูปแบบสื่อต่างๆ ตั้งแต่หนังสือและภาพยนตร์ไปจนถึงประสบการณ์ความเป็นจริงเสมือน แม้จะมีความก้าวหน้าทางเทคโนโลยีเหล่านี้ แต่องค์ประกอบพื้นฐานของเรื่องราวที่น่าสนใจยังคงไม่เปลี่ยนแปลง`,
+    en: `Ethical considerations are important in decision-making processes. Evaluating the potential impact on others ensures responsible choices. Ethics guide professional conduct and personal behavior.`,
+    th: `การพิจารณาด้านจริยธรรมมีความสำคัญในกระบวนการตัดสินใจ การประเมินผลกระทบที่อาจเกิดขึ้นกับผู้อื่นทำให้มั่นใจได้ว่ามีการเลือกอย่างรับผิดชอบ จริยธรรมเป็นแนวทางในการปฏิบัติงานและพฤติกรรมส่วนบุคคล`,
   },
   {
     id: 29,
-    en: `The concept of sustainable living has gained significant attention in recent years as we face increasing environmental challenges. It involves making conscious choices about our consumption patterns, energy usage, and waste management to minimize our impact on the planet. This lifestyle shift encompasses everything from choosing renewable energy sources and reducing single-use plastics to supporting local food systems and practicing mindful consumption. While the transition to sustainable living may seem daunting, small changes in daily habits can collectively make a substantial difference in preserving our environment for future generations.`,
-    th: `แนวคิดเรื่องการใช้ชีวิตอย่างยั่งยืนได้รับความสนใจอย่างมากในช่วงไม่กี่ปีที่ผ่านมา เมื่อเราเผชิญกับความท้าทายด้านสิ่งแวดล้อมที่เพิ่มขึ้น เกี่ยวข้องกับการเลือกอย่างมีสติเกี่ยวกับรูปแบบการบริโภค การใช้พลังงาน และการจัดการของเสียเพื่อลดผลกระทบต่อโลก การเปลี่ยนแปลงวิถีชีวิตนี้ครอบคลุมทุกอย่างตั้งแต่การเลือกแหล่งพลังงานหมุนเวียนและลดการใช้พลาสติกแบบใช้ครั้งเดียว ไปจนถึงการสนับสนุนระบบอาหารท้องถิ่นและการบริโภคอย่างมีสติ`,
+    en: `Reading regularly expands knowledge and improves cognitive function. Literature exposes readers to new ideas and cultures. Making time for reading can enhance language skills and creativity.`,
+    th: `การอ่านเป็นประจำช่วยขยายความรู้และปรับปรุงการทำงานของการรับรู้ วรรณกรรมเปิดโอกาสให้ผู้อ่านได้รับแนวคิดและวัฒนธรรมใหม่ๆ การหาเวลาสำหรับการอ่านสามารถเพิ่มทักษะทางภาษาและความคิดสร้างสรรค์`,
   },
   {
     id: 30,
-    en: `The rapid advancement of space exploration technology has opened up new possibilities for human civilization. Private companies now compete alongside government agencies in the race to develop more efficient rockets, sustainable space habitats, and innovative solutions for long-distance space travel. The potential for mining asteroids, establishing lunar bases, and eventually colonizing Mars has moved from science fiction to serious scientific endeavor. These developments not only push the boundaries of human achievement but also promise technological breakthroughs that could benefit life on Earth, from new materials and energy solutions to improved communication systems.`,
-    th: `ความก้าวหน้าอย่างรวดเร็วของเทคโนโลยีการสำรวจอวกาศได้เปิดโอกาสใหม่ๆ สำหรับอารยธรรมมนุษย์ บริษัทเอกชนแข่งขันกับหน่วยงานของรัฐในการแข่งขันเพื่อพัฒนาจรวดที่มีประสิทธิภาพมากขึ้น ที่อยู่อาศัยในอวกาศที่ยั่งยืน และโซลูชั่นนวัตกรรมสำหรับการเดินทางในอวกาศระยะไกล ศักยภาพในการทำเหมืองดาวเคราะห์น้อย การสร้างฐานบนดวงจันทร์ และในที่สุดการตั้งถิ่นฐานบนดาวอังคารได้เปลี่ยนจากนิยายวิทยาศาสตร์เป็นความพยายามทางวิทยาศาสตร์ที่จริงจัง`,
+    en: `Resilience enables individuals to overcome adversity. Developing coping strategies and a positive mindset helps navigate challenges. Resilience is built over time through experiences and personal growth.`,
+    th: `ความยืดหยุ่นช่วยให้บุคคลเอาชนะความทุกข์ยาก การพัฒนากลยุทธ์การเผชิญปัญหาและทัศนคติเชิงบวกช่วยนำทางความท้าทาย ความยืดหยุ่นถูกสร้างขึ้นเมื่อเวลาผ่านไปผ่านประสบการณ์และการเติบโตส่วนบุคคล`,
   },
 ];
 
