@@ -3,7 +3,59 @@ import { useState, useMemo } from 'react';
 export type Language = 'en' | 'th';
 
 // Translation data organized by page
-const translations = {
+type TranslationsType = {
+  [key: string]: {
+    en: {
+      title: string;
+      subtitle: string;
+      startButton: string;
+      selectLanguage: string;
+      overview: {
+        title: string;
+        description: string;
+        points: string[];
+      };
+      process: {
+        title: string;
+        points: string[];
+      };
+      requirements: {
+        title: string;
+        points: string[];
+      };
+      policy: {
+        title: string;
+        points: string[];
+      };
+    };
+    th: {
+      title: string;
+      subtitle: string;
+      startButton: string;
+      selectLanguage: string;
+      overview: {
+        title: string;
+        description: string;
+        points: string[];
+      };
+      process: {
+        title: string;
+        points: string[];
+      };
+      requirements: {
+        title: string;
+        points: string[];
+      };
+      policy: {
+        title: string;
+        points: string[];
+      };
+      progress?: string;
+    };
+  };
+};
+
+const translations: TranslationsType = {
   home: {
     en: {
       title: 'Voice Data Collection Project',
@@ -13,43 +65,41 @@ const translations = {
       overview: {
         title: 'Project Overview',
         description:
-          "We are building an advanced AI model that can translate speech between Thai and English while maintaining the speaker's original voice characteristics. Your voice recordings will help create more natural and personalized voice translations.",
+          "We are developing an AI model that can translate speech between Thai and English while maintaining the speaker's original voice characteristics. Your voice recordings will help train and improve this technology.",
         points: [
-          'Innovative AI translation preserving your voice identity',
-          'Contributes to bilingual voice-to-voice translation technology',
-          'Helps create more natural-sounding translations',
-          'Expected duration: 10-15 minutes',
+          'Your recordings will help train AI models for voice-to-voice translation',
+          'The AI will learn to translate while preserving speaker voice characteristics',
+          'Help create more natural-sounding translations between Thai and English',
+          'Takes approximately 15-20 minutes to complete',
         ],
       },
       process: {
         title: 'Recording Guide',
         points: [
-          'Read and record each passage in English',
-          'Record the same passage in Thai',
-          'Speak clearly at a natural pace',
-          'Record in a quiet environment',
-          'Keep consistent distance from microphone',
-          'You can take breaks between passages',
-          'Review and re-record if needed',
-          'Complete all 15 passages',
+          'Record each passage in both English and Thai versions',
+          'Speak naturally at your comfortable pace',
+          'Ensure you are in a quiet environment for clear recordings',
+          'Take breaks between recordings if needed',
+          'Review and re-record passages as needed',
+          'Complete all passages in both languages',
         ],
       },
       requirements: {
         title: 'Technical Requirements',
         points: [
           'Working microphone',
-          'Quiet environment',
+          'Quiet recording environment',
           'Stable internet connection',
           'Latest version of Chrome/Firefox/Safari',
         ],
       },
       policy: {
-        title: 'Data Policy',
+        title: 'Data Usage & Privacy',
         points: [
-          'Your voice data will be used to train AI translation models',
-          'Data is stored securely and anonymously',
+          'Voice data will be used to train AI translation models',
+          'All data is collected anonymously',
           'No personal information is collected',
-          'You can request data deletion',
+          'You can request deletion of your recordings',
           'Data will not be used for commercial purposes',
         ],
       },
@@ -62,43 +112,41 @@ const translations = {
       overview: {
         title: 'ภาพรวมโครงการ',
         description:
-          'เรากำลังพัฒนาโมเดล AI ขั้นสูงที่สามารถแปลเสียงระหว่างภาษาไทยและอังกฤษ โดยรักษาลักษณะเสียงเดิมของผู้พูด การบันทึกเสียงของคุณจะช่วยสร้างการแปลเสียงที่เป็นธรรมชาติและเป็นส่วนตัวมากขึ้น',
+          'เรากำลังพัฒนาโมเดล AI ที่สามารถแปลเสียงระหว่างภาษาไทยและอังกฤษ โดยรักษาลักษณะเสียงเดิมของผู้พูด การบันทึกเสียงของคุณจะช่วยฝึกฝนและพัฒนาเทคโนโลยีนี้',
         points: [
-          'นวัตกรรม AI แปลเสียงที่รักษาเอกลักษณ์เสียงของคุณ',
-          'มีส่วนร่วมในการพัฒนาเทคโนโลยีแปลเสียงสองภาษา',
-          'ช่วยสร้างการแปลที่ฟังเป็นธรรมชาติมากขึ้น',
-          'ใช้เวลาประมาณ 10-15 นาที',
+          'การบันทึกเสียงของคุณจะช่วยฝึกฝนโมเดล AI สำหรับการแปลเสียง',
+          'AI จะเรียนรู้การแปลโดยรักษาลักษณะเสียงของผู้พูด',
+          'ช่วยสร้างการแปลที่ฟังเป็นธรรมชาติระหว่างภาษาไทยและอังกฤษ',
+          'ใช้เวลาประมาณ 15-20 นาทีในการทำให้เสร็จ',
         ],
       },
       process: {
         title: 'คำแนะนำการบันทึก',
         points: [
-          'อ่านและบันทึกแต่ละบทความเป็นภาษาอังกฤษ',
-          'บันทึกบทความเดียวกันเป็นภาษาไทย',
-          'พูดให้ชัดเจนในจังหวะธรรมชาติ',
-          'บันทึกในสภาพแวดล้อมที่เงียบ',
-          'รักษาระยะห่างจากไมโครโฟนให้คงที่',
-          'สามารถพักระหว่างบทความได้',
-          'ตรวจสอบและบันทึกใหม่ได้หากต้องการ',
-          'ทำให้ครบทั้ง 15 บทความ',
+          'บันทึกแต่ละบทความทั้งในภาษาอังกฤษและภาษาไทย',
+          'พูดอย่างเป็นธรรมชาติในจังหวะที่คุณสบาย',
+          'ตรวจสอบให้แน่ใจว่าคุณอยู่ในสภาพแวดล้อมที่เงียบสำหรับการบันทึกที่ชัดเจน',
+          'พักระหว่างการบันทึกได้ตามต้องการ',
+          'ตรวจสอบและบันทึกใหม่ได้ตามต้องการ',
+          'ทำให้ครบทุกบทความในทั้งสองภาษา',
         ],
       },
       requirements: {
         title: 'ข้อกำหนดทางเทคนิค',
         points: [
-          'ไมโครโฟนที่ใช้งานได้',
-          'สภาพแวดล้อมที่เงียบ',
+          'ไมโครโฟนที่ทำงานได้',
+          'สภาพแวดล้อมที่เงียบสำหรับการบันทึก',
           'การเชื่อมต่ออินเทอร์เน็ตที่เสถียร',
-          'เบราว์เซอร์ Chrome/Firefox/Safari เวอร์ชันล่าสุด',
+          'เว็บเบราว์เซอร์ที่ทันสมัย (Chrome/Firefox/Safari)',
         ],
       },
       policy: {
-        title: 'นโยบายข้อมูล',
+        title: 'การใช้ข้อมูลและความเป็นส่วนตัว',
         points: [
-          'ข้อมูลเสียงของคุณจะถูกใช้ในการฝึกโมเดล AI แปลเสียง',
-          'ข้อมูลถูกเก็บอย่างปลอดภัยและไม่ระบุตัวตน',
+          'ข้อมูลเสียงจะถูกใช้ในการฝึกฝนโมเดล AI แปลเสียง',
+          'ข้อมูลทั้งหมดถูกเก็บแบบไม่ระบุตัวตน',
           'ไม่มีการเก็บข้อมูลส่วนบุคคล',
-          'คุณสามารถขอลบข้อมูลได้',
+          'คุณสามารถขอลบการบันทึกเสียงของคุณได้',
           'ข้อมูลจะไม่ถูกใช้เพื่อการพาณิชย์',
         ],
       },
@@ -205,20 +253,9 @@ const translations = {
   },
 };
 
-// A simple function to get translations by page and language
-function getTranslation(page: string, language: Language) {
-  return translations[page][language];
-}
-
 // Simple hook for translations
 export function useTranslation(page: string, initialLanguage: Language = 'en') {
   const [language, setLanguage] = useState<Language>(initialLanguage);
-
-  const t = useMemo(() => getTranslation(page, language), [page, language]);
-
-  return {
-    t,
-    language,
-    setLanguage,
-  };
+  const t = useMemo(() => translations[page][language], [page, language]);
+  return { t, language, setLanguage };
 }

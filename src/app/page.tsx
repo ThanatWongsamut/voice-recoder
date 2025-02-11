@@ -10,14 +10,17 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import InfoCard from './_components/infoCard';
-import { useTranslation } from '@/translation';
+// import { useTranslation } from '@/translation';
+import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 
 const HomePage: React.FC = () => {
-  const { t, setLanguage } = useTranslation('home');
+  // const { t, setLanguage } = useTranslation('home');
+  const { t, i18n } = useTranslation('translation');
+  const router = useRouter();
 
   const handleStartRecording = () => {
-    // Add navigation to record page
-    // e.g., router.push('/record')
+    router.push('/record');
   };
 
   return (
@@ -29,39 +32,39 @@ const HomePage: React.FC = () => {
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="flex items-center gap-2">
                 <Languages className="h-4 w-4" />
-                {t.selectLanguage}
+                {t('home.selectLanguage')}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem onClick={() => setLanguage('en')}>English</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLanguage('th')}>ภาษาไทย</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => i18n.changeLanguage('en')}>English</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => i18n.changeLanguage('th')}>ภาษาไทย</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
 
         {/* Header */}
         <div className="text-center space-y-4 mb-12">
-          <h1 className="text-4xl font-bold text-gray-900">{t.title}</h1>
-          <p className="text-xl text-gray-600">{t.subtitle}</p>
+          <h1 className="text-4xl font-bold text-gray-900">{t('home.title')}</h1>
+          <p className="text-xl text-gray-600">{t('home.subtitle')}</p>
         </div>
 
         {/* Main Content */}
         <div className="space-y-8">
           {/* Overview Card */}
           <InfoCard
-            title={t.overview.title}
+            title={t('home.overview.title')}
             icon={Info}
-            points={t.overview.points}
-            description={t.overview.description}
+            points={t('home.overview.points', { returnObjects: true })}
+            description={t('home.overview.description')}
             iconClassName="h-5 w-5 text-blue-500"
             pointIconClassName="h-5 w-5 text-green-500 mt-1"
           />
 
           {/* Process Card */}
           <InfoCard
-            title={t.process.title}
+            title={t('home.process.title')}
             icon={ListChecks}
-            points={t.process.points}
+            points={t('home.process.points', { returnObjects: true })}
             iconClassName="h-5 w-5 text-purple-500"
             pointIconClassName="h-5 w-5 text-purple-500 mt-1"
           />
@@ -69,18 +72,18 @@ const HomePage: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {/* Requirements Card */}
             <InfoCard
-              title={t.requirements.title}
+              title={t('home.requirements.title')}
               icon={Clock}
-              points={t.requirements.points}
+              points={t('home.requirements.points', { returnObjects: true })}
               iconClassName="h-5 w-5 text-orange-500"
               pointIconClassName="h-5 w-5 text-orange-500 mt-1"
             />
 
             {/* Policy Card */}
             <InfoCard
-              title={t.policy.title}
+              title={t('home.policy.title')}
               icon={Lock}
-              points={t.policy.points}
+              points={t('home.policy.points', { returnObjects: true })}
               iconClassName="h-5 w-5 text-orange-500"
               pointIconClassName="h-5 w-5 text-orange-500 mt-1"
             />
@@ -92,7 +95,7 @@ const HomePage: React.FC = () => {
               onClick={handleStartRecording}
               className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-6 text-lg"
             >
-              {t.startButton}
+              {t('home.startButton')}
             </Button>
           </div>
         </div>

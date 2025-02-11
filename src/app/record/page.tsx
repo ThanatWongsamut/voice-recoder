@@ -23,8 +23,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Language, useTranslation } from '@/translation';
-import { usePassages } from '@/hooks/usePassages';
+// import { Language, useTranslation } from '@/translation';
+// import { usePassages } from '@/hooks/usePassages';
+import { useTranslation } from 'react-i18next';
 
 // interface Passage {
 //   id: number;
@@ -48,6 +49,8 @@ interface RecordingStatus {
   processing: string;
   error: string;
 }
+
+type Language = 'en' | 'th';
 
 // const samplePassages: Passage[] = [
 //   {
@@ -128,17 +131,11 @@ interface RecordingStatus {
 // ];
 
 class AudioRecorder {
-  private mediaRecorder: MediaRecorder | null;
-  private audioChunks: BlobPart[];
-  private stream: MediaStream | null;
+  private mediaRecorder: MediaRecorder | null = null;
+  private audioChunks: BlobPart[] = [];
+  private stream: MediaStream | null = null;
 
-  constructor() {
-    this.mediaRecorder = null;
-    this.audioChunks = [];
-    this.stream = null;
-  }
-
-  async start() {
+  async start(): Promise<boolean> {
     try {
       this.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       this.mediaRecorder = new MediaRecorder(this.stream);
@@ -168,6 +165,15 @@ class AudioRecorder {
       this.mediaRecorder.stop();
     });
   }
+
+  cleanup(): void {
+    if (this.stream) {
+      this.stream.getTracks().forEach((track) => track.stop());
+      this.stream = null;
+    }
+    this.mediaRecorder = null;
+    this.audioChunks = [];
+  }
 }
 
 const RecordingPage = () => {
@@ -188,9 +194,9 @@ const RecordingPage = () => {
 
   // const t = translations[language];
 
-  const { t, setLanguage } = useTranslation('recording');
+  const { t, i18n } = useTranslation('translation');
 
-  const passages = usePassages();
+  // const passages = usePassages();
 
   useEffect(() => {
     checkMicrophonePermission();
@@ -344,12 +350,13 @@ const RecordingPage = () => {
     return (
       <div className="space-y-4">
         <h3 className="font-semibold text-lg flex items-center gap-2">
-          {t[`${lang}Version`]}
+          ไทย
           {isCompleted && <CheckCircle className="h-4 w-4 text-green-600" />}
         </h3>
 
         <div className="bg-gray-50 p-6 rounded-lg text-lg border" suppressHydrationWarning>
-          {passages[currentPassageIndex][lang]}
+          {/* {passages[currentPassageIndex][lang]} */}
+          ทดสอบ
         </div>
 
         <div className="flex gap-4 flex-wrap">
@@ -361,7 +368,7 @@ const RecordingPage = () => {
             disabled={isDisabled}
           >
             <Mic className="h-4 w-4" />
-            {isCurrentlyRecording ? t.stopButton : t.recordButton}
+            {isCurrentlyRecording ? t('recording.stopButton') : t('recording.recordButton')}
           </Button>
 
           {isCompleted && (
@@ -373,7 +380,7 @@ const RecordingPage = () => {
                 disabled={isRecording}
               >
                 <Play className="h-4 w-4" />
-                {isCurrentlyPlaying ? t.stopButton : t.playButton}
+                {isCurrentlyPlaying ? t('recording.stopButton') : t('recording.playButton')}
               </Button>
               <Button
                 variant="outline"
@@ -382,7 +389,7 @@ const RecordingPage = () => {
                 disabled={isRecording || !!isCurrentlyPlaying}
               >
                 <RotateCcw className="h-4 w-4" />
-                {t.reRecordButton}
+                {t('recording.reRecordButton')}
               </Button>
             </>
           )}
@@ -392,7 +399,7 @@ const RecordingPage = () => {
           <Alert className="bg-red-50 border-red-200">
             <AlertCircle className="h-4 w-4 text-red-600" />
             <AlertDescription className="text-red-700">
-              {t.statusMessages.recording} ({recordingTime}s)
+              {t('recording.statusMessages.recording')} ({recordingTime}s)
             </AlertDescription>
           </Alert>
         )}
@@ -400,14 +407,16 @@ const RecordingPage = () => {
         {isCompleted && !isCurrentlyRecording && (
           <Alert className="bg-green-50 border-green-200">
             <CheckCircle className="h-4 w-4 text-green-600" />
-            <AlertDescription className="text-green-700">{t.completed}</AlertDescription>
+            <AlertDescription className="text-green-700">
+              {t('recording.completed')}
+            </AlertDescription>
           </Alert>
         )}
 
         {recordingStatus === 'error' && (
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
-            <AlertDescription>{t.statusMessages.error}</AlertDescription>
+            <AlertDescription>{t('recording.statusMessages.error')}</AlertDescription>
           </Alert>
         )}
       </div>
@@ -443,19 +452,19 @@ const RecordingPage = () => {
         {/* Header Section */}
         <div className="flex justify-between items-center flex-wrap gap-4">
           <div>
-            <h1 className="text-2xl md:text-4xl font-bold text-gray-900">{t.title}</h1>
-            <p className="text-gray-600 mt-2">{t.subtitle}</p>
+            <h1 className="text-2xl md:text-4xl font-bold text-gray-900">{t('recording.title')}</h1>
+            <p className="text-gray-600 mt-2">{t('recording.subtitle')}</p>
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="flex items-center gap-2">
                 <Languages className="h-4 w-4" />
-                {t.selectLanguage}
+                {t('recording.selectLanguage')}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem onClick={() => setLanguage('en')}>English</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLanguage('th')}>ภาษาไทย</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => i18n.changeLanguage('en')}>English</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => i18n.changeLanguage('th')}>ภาษาไทย</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -463,12 +472,12 @@ const RecordingPage = () => {
         {/* Progress Card */}
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle>{t.progress}</CardTitle>
+            <CardTitle>{t('recording.progress')}</CardTitle>
           </CardHeader>
           <CardContent>
             <Progress value={(totalProgress / 15) * 100} className="h-2" />
             <p className="mt-2 text-sm text-gray-600">
-              {totalProgress}/15 {t.passagesCompleted}
+              {totalProgress}/15 {t('recording.passagesCompleted')}
             </p>
           </CardContent>
         </Card>
@@ -477,7 +486,7 @@ const RecordingPage = () => {
         {hasMicPermission === false && (
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
-            <AlertDescription>{t.micPermission}</AlertDescription>
+            <AlertDescription>{t('recording.micPermission')}</AlertDescription>
           </Alert>
         )}
 
@@ -486,16 +495,18 @@ const RecordingPage = () => {
           <CardHeader className="pb-2">
             <CardTitle className="flex items-center gap-2">
               <Info className="h-4 w-4" />
-              {t.instructions}
+              {t('recording.instructions')}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-4 space-y-1">
-              {t.instructionsDetails.map((instruction: string, index: number) => (
-                <li key={index} className="text-sm text-gray-600">
-                  {instruction}
-                </li>
-              ))}
+              {t('recording.instructionsDetails', { returnObjects: true }).map(
+                (instruction: string, index: number) => (
+                  <li key={index} className="text-sm text-gray-600">
+                    {instruction}
+                  </li>
+                )
+              )}
             </ul>
           </CardContent>
         </Card>
@@ -504,7 +515,7 @@ const RecordingPage = () => {
         <Card>
           <CardHeader>
             <CardTitle>
-              {t.currentPassage} {currentPassageIndex + 1}/15
+              {t('recording.currentPassage')} {currentPassageIndex + 1}/15
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -523,7 +534,7 @@ const RecordingPage = () => {
             className="flex items-center gap-2"
           >
             <ArrowLeft className="h-4 w-4" />
-            {t.previousPassage}
+            {t('recording.previousPassage')}
           </Button>
 
           <Button
@@ -531,7 +542,7 @@ const RecordingPage = () => {
             disabled={currentPassageIndex === 14 || !canMoveToNext}
             className="flex items-center gap-2"
           >
-            {t.nextPassage}
+            {t('recording.nextPassage')}
             <ArrowRight className="h-4 w-4" />
           </Button>
         </div>
