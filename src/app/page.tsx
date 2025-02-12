@@ -1,22 +1,16 @@
 'use client';
 
 import React from 'react';
-import { Languages, Info, ListChecks, Clock, Lock } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import InfoCard from './_components/infoCard';
-// import { useTranslation } from '@/translation';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 
+import { Info, ListChecks, Clock, Lock } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import InfoCard from './_components/infoCard';
+import LanguageSwitcher from './_components/LanguageSwitcher';
+
 const HomePage: React.FC = () => {
-  // const { t, setLanguage } = useTranslation('home');
-  const { t, i18n } = useTranslation('translation');
+  const { t } = useTranslation('translation');
   const router = useRouter();
 
   const handleStartRecording = () => {
@@ -28,18 +22,7 @@ const HomePage: React.FC = () => {
       <div className="max-w-4xl mx-auto">
         {/* Language Switcher */}
         <div className="flex justify-end mb-8">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="flex items-center gap-2">
-                <Languages className="h-4 w-4" />
-                {t('home.selectLanguage')}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem onClick={() => i18n.changeLanguage('en')}>English</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => i18n.changeLanguage('th')}>ภาษาไทย</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <LanguageSwitcher />
         </div>
 
         {/* Header */}
