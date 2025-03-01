@@ -19,6 +19,7 @@ export async function GET(request: NextRequest) {
       });
     }
 
+    // TODO: Implement passage fetching
     // Get passages
     const passages = [
       {
